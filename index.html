@@ -90,8 +90,8 @@ body {
 	z-index: 1;
 }
 		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="./export/index.icon.png" />
-<link rel="apple-touch-icon" href="./export/index.apple-touch-icon.png"/>
+		<link id="-gd-engine-icon" rel="icon" type="image/png" href="./index.icon.png" />
+<link rel="apple-touch-icon" href="./index.apple-touch-icon.png"/>
 
 	</head>
 	<body>
@@ -104,12 +104,12 @@ body {
 		</noscript>
 
 		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="./export/index.png" alt="">
+			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="./index.png" alt="">
 			<progress id="status-progress"></progress>
 			<div id="status-notice"></div>
 		</div>
 
-		<script src="./export/index.js"></script>
+		<script src="./index.js"></script>
 		<script>
 // Configure Godot to use correct paths for Azure Static Web Apps
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":593484,"index.wasm":35749181},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
@@ -121,7 +121,7 @@ Engine.prototype.loadFile = function(filename) {
     // If it's a core file that should be loaded from export directory
     if (filename === "index.pck" || filename === "index.wasm") {
         // Try to load from the export directory
-        return originalLoadFile.call(this, "./export/" + filename);
+        return originalLoadFile.call(this, "./" + filename);
     }
     // For other files, use the default behavior
     return originalLoadFile.call(this, filename);
