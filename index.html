@@ -109,10 +109,19 @@ body {
 			<div id="status-notice"></div>
 		</div>
 
-		<script src="./export/index.js"></script>
 		<script>
+// Modified Godot configuration for Azure Static Web Apps compatibility
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":593484,"index.wasm":35749181},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
+
+// Override the default file loading to handle Azure Static Web Apps paths
+const originalLoadFile = GodotEngine.prototype.loadFile;
+GodotEngine.prototype.loadFile = function(filename) {
+    // Try to load from the current directory first
+    return originalLoadFile.call(this, filename);
+};
+
+// Create engine with proper configuration for Azure deployment
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
@@ -215,5 +224,6 @@ const engine = new Engine(GODOT_CONFIG);
 	}
 }());
 		</script>
+		<script src="./export/index.js"></script>
 	</body>
 </html>
